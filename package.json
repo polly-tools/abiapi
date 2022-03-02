@@ -1,0 +1,24 @@
+{
+  "name": "abiapi",
+  "version": "0.1.1",
+  "description": "A helper class for building APIs for ABIs",
+  "main": "abiapi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pollyOS/abiapi.git"
+  },
+  "keywords": [
+    "abi",
+    "api",
+    "js"
+  ],
+  "author": "troels_a",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pollyOS/abiapi/issues"
+  },
+  "homepage": "https://github.com/pollyOS/abiapi#readme"
+}
