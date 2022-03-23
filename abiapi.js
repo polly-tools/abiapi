@@ -6,8 +6,18 @@ class ABIAPI {
         this.supportedMethods = [];
         this.methodCacheTTL = {};
         this.cacheTTL = 60;
+        this.parsers = {};
+        this.globalParsers = [];
     }
 
+
+    addParser(method, parser){
+        this.parsers[method] = parser;
+    }
+
+    addGlobalParser(parser){
+        this.globalParsers.push(parser);
+    }
 
     parseInput(type, value){
 
@@ -17,6 +27,21 @@ class ABIAPI {
     
         return value;
     
+    }
+
+    parse(method, value){
+
+        if(this.globalParsers.length > 0){
+            for (let i = 0; i < this.globalParsers.length; i++) {
+                value = this.globalParsers[i](value);
+            }
+        }
+        
+        if(typeof this.parsers[method] == 'function')
+            value = this.parsers[method](value);
+
+        return value;
+
     }
 
     supportsMethod(method){
