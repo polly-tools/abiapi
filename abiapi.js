@@ -24,6 +24,10 @@ class ABIAPI {
         if(typeof value == 'string' && type.match(/^u?int/)){
             return parseInt(value);
         }
+
+        if(typeof value == 'string' && type == 'bool'){
+            return (value == 'true' || value == '1') ? true : false;
+        }
     
         return value;
     
