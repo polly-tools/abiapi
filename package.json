@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/pollyOS/abiapi/issues"
   },
-  "homepage": "https://github.com/pollyOS/abiapi#readme"
+  "homepage": "https://github.com/pollyOS/abiapi#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
