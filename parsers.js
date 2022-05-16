@@ -1,4 +1,4 @@
-import {isArray, isObject} from 'lodash';
+const {isArray, isObject} = require('lodash');
 
 function bigNumbersToNumber(value){
 
