@@ -1,6 +1,5 @@
 class ABIAPI {
 
-
     constructor(abi){
         this.abi = abi;
         this.supportedMethods = [];
@@ -19,16 +18,23 @@ class ABIAPI {
         this.globalParsers.push(parser);
     }
 
-    parseInput(type, value){
+    _isArrayType(type){
+        const is = type.match(/\[\]$/);
+        console.log(type, is)
+        return is;
+    }
 
+    parseInput(type, value){
         if(typeof value == 'string' && type.match(/^u?int/)){
+            if(this._isArrayType(type))
+                return value.replace('[', '').replace(']', '').split(',').map(val => parseInt(val.trim()));
             return parseInt(value);
         }
-
-        if(typeof value == 'string' && type == 'bool'){
+        else if(typeof value == 'string' && type == 'bool'){
             return (value == 'true' || value == '1') ? true : false;
         }
-    
+
+
         return value;
     
     }
@@ -100,7 +106,7 @@ class ABIAPI {
             }
     
         }
-    
+
         return params;
 
     }
