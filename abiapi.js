@@ -11,7 +11,9 @@ class ABIAPI {
 
 
     addParser(method, parser){
-        this.parsers[method] = parser;
+        if(!this.parsers[method])
+            this.parsers[method] = [];
+        this.parsers[method].push(parser);
     }
 
     addGlobalParser(parser){
@@ -47,8 +49,11 @@ class ABIAPI {
             }
         }
         
-        if(typeof this.parsers[method] == 'function')
-            value = this.parsers[method](value);
+        if(this.parsers[method]){
+            for (let i = 0; i < this.parsers[method].length; i++) {
+                value = this.parsers[method][i](value);
+            }
+        }
 
         return value;
 
