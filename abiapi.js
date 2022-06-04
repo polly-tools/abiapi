@@ -22,7 +22,6 @@ class ABIAPI {
 
     _isArrayType(type){
         const is = type.match(/\[\]$/);
-        console.log(type, is)
         return is;
     }
 
