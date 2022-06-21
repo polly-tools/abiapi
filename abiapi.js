@@ -25,7 +25,7 @@ class ABIAPI {
         return is;
     }
 
-    parseInput(type, value){
+    parseInput(input, value){
 
         const type = input.type;
         if(typeof value == 'string' && type.match(/^u?int/)){
