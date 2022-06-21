@@ -26,6 +26,8 @@ class ABIAPI {
     }
 
     parseInput(type, value){
+
+        const type = input.type;
         if(typeof value == 'string' && type.match(/^u?int/)){
             if(this._isArrayType(type))
                 return value.replace('[', '').replace(']', '').split(',').map(val => parseInt(val.trim()));
@@ -34,7 +36,11 @@ class ABIAPI {
         else if(typeof value == 'string' && type == 'bool'){
             return (value == 'true' || value == '1') ? true : false;
         }
-
+        else if(typeof value == 'string' && type == 'tuple'){
+            return value.replace('[', '').replace(']', '').split(',').map((val, index) => {
+                return this.parseInput({type: input.components[index].type}, val);
+            });
+        }
 
         return value;
     
@@ -100,7 +106,7 @@ class ABIAPI {
                     const input = entry.inputs[ii];
     
                     if(query[input.name]){
-                        params.push(this.parseInput(input.type, query[input.name]));
+                        params.push(this.parseInput(input, query[input.name]));
                     }
                     
                 }

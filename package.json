@@ -1,6 +1,6 @@
 {
   "name": "abiapi",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "A helper class for building APIs for ABIs",
   "main": "abiapi.js",
   "scripts": {
