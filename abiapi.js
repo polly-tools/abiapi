@@ -106,7 +106,7 @@ class ABIAPI {
                 for (let ii = 0; ii < entry.inputs.length; ii++) {
                     const input = entry.inputs[ii];
     
-                    if(query[input.name]){
+                    if(typeof query[input.name] !== 'undefined'){
                         params.push(this.parseInput(input, query[input.name]));
                     }
                     
